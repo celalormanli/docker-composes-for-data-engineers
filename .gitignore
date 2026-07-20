@@ -1,0 +1,17 @@
+# OS
+.DS_Store
+
+# Environment files
+.env
+*.env.local
+
+# Logs
+*.log
+
+# Local data directories mounted into containers
+**/data/
+**/volumes/
+
+# Kafka Connect plugin JARs (keep the folder, not its contents)
+kafka-cluster/plugins/*
+!kafka-cluster/plugins/.gitkeep
