@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+  <!-- ===== Image defaults (apache/hive single-node Tez local mode) ===== -->
+  <property>
+    <name>hive.server2.enable.doAs</name>
+    <value>false</value>
+  </property>
+  <property>
+    <name>hive.tez.exec.inplace.progress</name>
+    <value>false</value>
+  </property>
+  <property>
+    <name>hive.tez.exec.print.summary</name>
+    <value>true</value>
+  </property>
+  <property>
+    <name>hive.exec.scratchdir</name>
+    <value>/opt/hive/scratch_dir</value>
+  </property>
+  <property>
+    <name>hive.user.install.directory</name>
+    <value>/opt/hive/install_dir</value>
+  </property>
+  <property>
+    <name>tez.runtime.optimize.local.fetch</name>
+    <value>true</value>
+  </property>
+  <property>
+    <name>hive.exec.submit.local.task.via.child</name>
+    <value>false</value>
+  </property>
+  <property>
+    <name>hive.compactor.worker.threads</name>
+    <value>1</value>
+  </property>
+  <property>
+    <name>mapreduce.framework.name</name>
+    <value>local</value>
+  </property>
+  <property>
+    <name>tez.local.mode</name>
+    <value>true</value>
+  </property>
+  <property>
+    <name>hive.metastore.event.db.notification.api.auth</name>
+    <value>false</value>
+  </property>
+
+  <!-- ===== Metastore backend: MySQL ===== -->
+  <property>
+    <name>javax.jdo.option.ConnectionDriverName</name>
+    <value>com.mysql.cj.jdbc.Driver</value>
+  </property>
+  <property>
+    <name>javax.jdo.option.ConnectionURL</name>
+    <value>jdbc:mysql://mysql:3306/metastore</value>
+  </property>
+  <property>
+    <name>javax.jdo.option.ConnectionUserName</name>
+    <value>hive</value>
+  </property>
+  <property>
+    <name>javax.jdo.option.ConnectionPassword</name>
+    <value>hive</value>
+  </property>
+
+  <!-- HiveServer2 connects to the remote metastore -->
+  <property>
+    <name>hive.metastore.uris</name>
+    <value>thrift://hive-metastore:9083</value>
+  </property>
+
+  <!-- ===== Warehouse on MinIO ===== -->
+  <property>
+    <name>hive.metastore.warehouse.dir</name>
+    <value>s3a://warehouse/managed</value>
+  </property>
+  <property>
+    <name>hive.metastore.warehouse.external.dir</name>
+    <value>s3a://warehouse/external</value>
+  </property>
+
+  <!-- ===== S3A -> MinIO ===== -->
+  <property>
+    <name>fs.s3a.endpoint</name>
+    <value>http://minio:9000</value>
+  </property>
+  <property>
+    <name>fs.s3a.access.key</name>
+    <value>minioadmin</value>
+  </property>
+  <property>
+    <name>fs.s3a.secret.key</name>
+    <value>minioadmin</value>
+  </property>
+  <property>
+    <name>fs.s3a.path.style.access</name>
+    <value>true</value>
+  </property>
+  <property>
+    <name>fs.s3a.connection.ssl.enabled</name>
+    <value>false</value>
+  </property>
+  <property>
+    <name>fs.s3a.impl</name>
+    <value>org.apache.hadoop.fs.s3a.S3AFileSystem</value>
+  </property>
+
+</configuration>
